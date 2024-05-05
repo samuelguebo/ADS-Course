@@ -100,7 +100,40 @@ Limitations: average area per state might be greater than my country and some ar
 ## Assigment 3: Coding questions
 
 ### Daily temperature
-TBD
+```javascript
+/**
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
+function dailyTemperatures(temperatures) {
+    let answer = []
+    let smallerValuesStack = []
+
+    // Set all values to 0 by default
+    answer = temperatures.map(() => 0)
+
+    for (let i = 0; i < temperatures.length; i++) {
+
+        // Compare temperature[i] against smaller values in stack.
+        // Do it in reverse order, hence the stack pattern
+        // and update answer's relevant indice
+
+        while( smallerValuesStack.length > 0
+            && temperatures[i] > temperatures[smallerValuesStack[smallerValuesStack.length - 1]] ) {
+
+            let warmTemperatureIndex = smallerValuesStack.pop(i)
+            let coldTemperatureStreak = i - warmTemperatureIndex ;
+            answer[warmTemperatureIndex] = coldTemperatureStreak
+
+        }
+
+        // Track this value because it's smaller than temperature[i-1]
+        smallerValuesStack.push(i)
+    }
+
+    return answer
+}
+```
 
 ### Rotate List
 TBD
