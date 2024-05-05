@@ -173,4 +173,41 @@ function kangaroo(x1, v1, x2, v2) {
 ```
 
 ### The 3n + 1 problem
-TBD
+```javascript
+function integerCycleLength(n){
+    let cycleLength = 0;
+
+    while (n > 1) {
+
+        if(n % 2 == 0){
+            n = n / 2
+        // If n is odd make it 3n +1
+        } else {
+            n = 3*n + 1
+        }
+        // Increment cycl
+        cycleLength += 1
+    }
+
+    if (n == 1){
+        cycleLength += 1;
+        return cycleLength;
+    }
+
+    return cycleLength
+}
+
+function findLargestCycleLength(x, y){
+    let largestCycleLength = 0;
+
+    for (var i = x; i <= y ; i++) {
+        let cycleLength = integerCycleLength(i)
+        largestCycleLength = Math.max(cycleLength, largestCycleLength)
+    }
+
+    return `${x} ${y} ${largestCycleLength}`
+}
+
+findLargestCycleLength(201,210) // output 201 210 89
+findLargestCycleLength(900,1000) // output 900 1000 174
+```
