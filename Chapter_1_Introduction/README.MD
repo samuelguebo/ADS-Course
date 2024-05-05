@@ -149,7 +149,43 @@ function dailyTemperatures(temperatures) {
 ```
 
 ### Rotate List
-TBD
+#### Problem
+https://leetcode.com/problems/rotate-list/submissions/1250339333/
+
+#### Solution
+```javascript
+function rotateRight(head, k) {
+    // Check for edge cases where the list is empty or rotation count is zero
+    if (!head || k === 0) return head;
+
+    let length = 1; // Variable to store the length of the list
+    let tail = head; // Variable to store the tail of the list
+
+    // Traverse the list to find its length and locate the tail node
+    while (tail.next) {
+        tail = tail.next;
+        length++;
+    }
+
+    k = k % length; // Adjust k to avoid unnecessary rotations
+    if (k === 0) return head; // If k is a multiple of the list length, no rotation needed
+
+    let stepsToNewHead = length - k - 1; // Calculate the number of steps to the new head
+    let newTail = head; // Initialize a pointer to find the new tail
+
+    // Move the new tail pointer to the node just before the new head
+    for (let i = 0; i < stepsToNewHead; i++) {
+        newTail = newTail.next;
+    }
+
+    // Perform the rotation
+    tail.next = head; // Connect the original tail with the original head to form a loop
+    head = newTail.next; // The node next to newTail becomes the new head
+    newTail.next = null; // Break the loop at newTail
+
+    return head; // Return the new head of the rotated list
+}
+```
 
 ### Kangaroo
 #### Problem
