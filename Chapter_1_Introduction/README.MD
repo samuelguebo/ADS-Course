@@ -87,7 +87,29 @@ TBD
 TBD
 
 ### Kangaroo
-TBD
+```javascript
+function kangaroo(x1, v1, x2, v2) {
+    /**
+     * If the second kangaroo is as fast or faster, they'll never meet  
+     */
+    if (v1 <= v2) {
+        return "NO";
+    }
+
+    const position_diff = x2 - x1
+    const speed_diff = v1 - v2
+
+    /**
+     * Check that dividing the distance by the speed difference returns an integer
+     * A decimal means kangaroos will only overlap at partial positions but won't meet
+     */
+    if (position_diff % speed_diff == 0) {
+        return "YES"
+    } else{
+        return "NO"
+    }
+}
+```
 
 ### The 3n + 1 problem
 TBD
