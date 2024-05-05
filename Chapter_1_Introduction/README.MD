@@ -78,11 +78,20 @@ function divideWithoutDefaultOperators (dividend, divisor) {
 
 ### 1-33
 #### Question
-There are twenty-five horses. At most, five horses can race together at a time. You must determine the fastest, second fastest, and third-fastest horses. Find the minimum number of races in which this can be done.
+There are twenty-five horses. At most, five horses can race together at a time.
+You must determine the fastest, second fastest, and third-fastest horses.
+Find the minimum number of races in which this can be done.
 
 #### Solution
-TBD
+I'll note that it's a tourament problem. Usually, at most two opponents would face each other and the number of rounds would be a binary-like splitting until there's only one opponent, the winner.
+In this case, the splitting would happen by group of 5.
+Each group of 5 would compete and the winner of each group would face each other, and that last round would determine the 1st, 2nd, 3rd winners.
 
+In more practical terms it would look like something like that
+Race 1 : all 25 horses are split into groups of 5 and compete. The fastest horse moves to the next race. 
+Race 2: all top 5 performers of the previous race will compete. We rank them by their time and find the 1st, 2nd, and 3rd best performer.
+
+Overall 2 races would suffice to do that.
 ### 1-35
 
 #### Question
