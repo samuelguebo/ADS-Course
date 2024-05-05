@@ -109,6 +109,10 @@ Limitations: average area per state might be greater than my country and some ar
 ## Assigment 3: Coding questions
 
 ### Daily temperature
+#### Problem
+https://leetcode.com/problems/daily-temperatures/
+
+#### Solution
 ```javascript
 /**
  * @param {number[]} temperatures
@@ -148,6 +152,10 @@ function dailyTemperatures(temperatures) {
 TBD
 
 ### Kangaroo
+#### Problem
+https://www.hackerrank.com/challenges/kangaroo/
+
+#### Solution
 ```javascript
 function kangaroo(x1, v1, x2, v2) {
     /**
@@ -173,7 +181,17 @@ function kangaroo(x1, v1, x2, v2) {
 ```
 
 ### The 3n + 1 problem
+#### Problem
+https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=29&page=show_problem&problem=36
+
+#### Solution
 ```javascript
+/**
+ * Implementation of the cycle length
+ * algorithm basd on the pseudo code in the exercice.
+ * @param n {number}
+ * @returns {number}
+ */
 function integerCycleLength(n){
     let cycleLength = 0;
 
@@ -197,6 +215,13 @@ function integerCycleLength(n){
     return cycleLength
 }
 
+/**
+ * Ussing the function above, this utiliy
+ * traverses the tuple to find the largest cycleLength
+ * @param x
+ * @param y
+ * @returns {string}
+ */
 function findLargestCycleLength(x, y){
     let largestCycleLength = 0;
 
