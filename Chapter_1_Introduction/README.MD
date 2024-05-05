@@ -55,7 +55,26 @@ Limitations: the US has density quite different from my country and the assumati
 Write a function to perform integer division without using either the / or * operators. Find a fast way to do it.
 
 #### Solution
-TBD
+```javascript
+function divideWithoutDefaultOperators (dividend, divisor) {
+    let quotient = 0
+
+    // No division by 0
+    if(divisor === 0 || divisor > dividend){
+        return 0
+    }
+
+    let remainder = dividend
+
+    // Subtract divisor from dividend until nothing is left
+    while( remainder >= divisor ){
+        remainder -= divisor
+        quotient += 1
+    }
+
+    return quotient
+}
+```
 
 ### 1-33
 #### Question
