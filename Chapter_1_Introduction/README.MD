@@ -1,6 +1,6 @@
 # Chapter 1: Introduction
 
-## Assigment 1: Estimation
+## Assignment 1: Estimation
 ### 1-21
 #### Question
 Do all the books you own total at least one million pages? How many total pages are stored in your school library?
@@ -48,7 +48,7 @@ Overall, that would give me 350 cities and 3500 towns in the US.
 
 Limitations: the US has density quite different from my country and the assumation 1 state area = my country area is not correct since states have various areas. 
 
-## Assigment 2: Interview problems
+## Assignment 2: Interview problems
 
 ### 1-32
 #### Question
@@ -106,7 +106,7 @@ So mentally that gives ( (100 * 350k) / 2 ) * 3 = 52,5 million gas stations.
 
 Limitations: average area per state might be greater than my country and some areas may smaller or higher population density, meaning more gas stations.
 
-## Assigment 3: Coding questions
+## Assignment 3: Coding questions
 
 ### Daily temperature
 #### Problem

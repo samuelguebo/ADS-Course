@@ -1,6 +1,6 @@
 # Chapter 2: Algorithm Analysis
 
-## Assigment 1: Program Analysis
+## Assignment 1: Program Analysis
 ### 2-1
 #### Question
 What value is returned by the following function? Express your answer as a
@@ -105,7 +105,7 @@ The returned value would be:
 
 The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
-## Assigment 2: Big Oh
+## Assignment 2: Big Oh
 ### 2-8
 #### Question
 For each of the following pairs of functions, either f (n) is in O(g(n)), f (n) is
@@ -149,7 +149,7 @@ positive constant c such that f (n) ≤ c · g(n) for all n > 1.
 #### Solution
 TBD
 
-## Assigment 3: Summation
+## Assignment 3: Summation
 ### 2-37
 #### Question
 When you first learned to multiply numbers, you were told that x × y means
@@ -162,7 +162,7 @@ O(1) time. (Hint: how big can y be as a function of n and b?)
 #### Solution
 TBD
 
-## Assigment 4: Interview questions
+## Assignment 4: Interview questions
 ### 2-49
 #### Question
 Suppose we start with n companies that eventually merge into one big company.
@@ -194,7 +194,7 @@ divided. Who gets the dollar and how many are killed?
 #### Solution
 TBD
 
-## Assigment 5: Programming challenge
+## Assignment 5: Programming challenge
 ### Leet code 2-1: Remove k-digits
 #### Question
 https://leetcode.com/problems/remove-k-digits/
