@@ -27,7 +27,6 @@ n * (n-1) * (n-1)
 ```
 The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
-## Assigment 2: Interview problems
 ### 2-2
 #### Question
 What value is returned by the following function? Express your answer as a
@@ -70,7 +69,6 @@ function prestiferous(n)
 #### Solution
 The returned value would be:
 ```plaintext
-
 (n-1) * n * 2n * (2n - n)
     =  (n^2 - n) * (2n * n)
     =  (n^2 - n) * (2n^2)
@@ -97,7 +95,6 @@ function conundrum(n)
 #### Solution
 The returned value would be:
 ```plaintext
-
 (n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 ) )
     = (n-1) * (n-2) * ( n - n - 1 + n - 2 - 1 )
     = (n-1) * (n-2) * (n-4)
