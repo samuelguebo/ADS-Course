@@ -171,30 +171,25 @@ the sum of Sith row = 1 + sum(S[i-1]) row if i > 0
 Suppose we start with n companies that eventually merge into one big company. How many different ways are there for them to merge?
 
 #### Solution
-TBD
+If ultimately the have to merge into one big company, there is only one way for that to happen.
+
 
 ### 2-51
 #### Question
-Six pirates must divide $300 dollars among themselves. The division is to proceed
-as follows. The senior pirate proposes a way to divide the money. Then the pirates
-vote. If the senior pirate gets at least half the votes he wins, and that division
-remains. If he doesn’t, he is killed and then the next senior-most pirate gets a
-chance to do the division. Now you have to tell what will happen and why (i.e.
-, how many pirates survive and how the division is done)? All the pirates are
-intelligent and the first priority is to stay alive and the next priority is to get as
-much money as possible.
+Six pirates must divide $300 dollars among themselves. The division is to proceed as follows. The senior pirate proposes a way to divide the money. Then the pirates vote. If the senior pirate gets at least half the votes he wins, and that division remains. If he doesn’t, he is killed and then the next senior-most pirate gets a chance to do the division. Now you have to tell what will happen and why (i.e., how many pirates survive and how the division is done)? All the pirates are intelligent and the first priority is to stay alive and the next priority is to get as much money as possible.
 
 #### Solution
-TBD
+```plaintext
+The likelihood of not getting enough vote and being killed is high because other pirates have an incentive to have less crew members alive as it means a larger share of the $300. All pirates will survive and share the money in equal parts: 300/6 = $50.
+```
 
 
 ### 2-52
 #### Question
-Reconsider the pirate problem above, where only one indivisible dollar is to be
-divided. Who gets the dollar and how many are killed?
+Reconsider the pirate problem above, where only one indivisible dollar is to be divided. Who gets the dollar and how many are killed?
 
 #### Solution
-TBD
+Since their priority is to stay alive, only 1 person will get the dollar and no crew member will be killed.
 
 ## Assignment 5: Programming challenge
 ### Leet code 2-1: Remove k-digits
