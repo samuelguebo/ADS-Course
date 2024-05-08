@@ -19,11 +19,12 @@ function mystery(n)
 #### Solution
 The returned value would be:
 
-`n * (n-1) * (n-1)`
-    `= n * ( (n-1)^2 )`
-    `= n * ( n^2 - 2n + 1)`
-    `= n^3 - 2n^2 + n`
-
+```plaintext
+n * (n-1) * (n-1)
+    = n * ( (n-1)^2 )
+    = n * ( n^2 - 2n + 1)
+    = n^3 - 2n^2 + n
+```
 The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
 ## Assigment 2: Interview problems
@@ -44,8 +45,10 @@ function pesky(n)
 
 #### Solution
 The returned value would be:
-`(n-1) * n * n`
-    `=  n^3 - n^2`
+```plaintext
+(n-1) * n * n
+    =  n^3 - n^2
+```
 
 The worst-case running time would be `O(n^3)`, a cubic complexity.
 
@@ -66,10 +69,13 @@ function prestiferous(n)
 
 #### Solution
 The returned value would be:
-`(n-1) * n * 2n * (2n - n) `
-    `=  (n^2 - n) * (2n * n)`
-    `=  (n^2 - n) * (2n^2)`
-    `=  2n^4 - 2n^3`
+```plaintext
+
+(n-1) * n * 2n * (2n - n)
+    =  (n^2 - n) * (2n * n)
+    =  (n^2 - n) * (2n^2)
+    =  2n^4 - 2n^3
+```
 
 The worst-case running time would be `O(n^4)`, an exponentially big time complexity.
 
@@ -90,12 +96,16 @@ function conundrum(n)
 
 #### Solution
 The returned value would be:
-`(n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 ) )`
-    `= (n-1) * (n-2) * ( n - n - 1 + n - 2 - 1 )`
-    `= (n-1) * (n-2) * (n-4)`
-    `= (n^2 - 2n -n + 2) * (n-4)`
-    `= n^3 - 2n^2 -n^2 + 2n - 4n^2 + 8n  + 4n + 8`
-    `= n^3 + 7n^2  + 14n + 8`
+```plaintext
+
+(n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 ) )
+    = (n-1) * (n-2) * ( n - n - 1 + n - 2 - 1 )
+    = (n-1) * (n-2) * (n-4)
+    = (n^2 - 2n -n + 2) * (n-4)
+    = n^3 - 2n^2 -n^2 + 2n - 4n^2 + 8n  + 4n + 8
+    = n^3 + 7n^2  + 14n + 8
+```
+
 The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
 ## Assigment 2: Big Oh
