@@ -17,14 +17,20 @@ function mystery(n)
 ```
 
 #### Solution
-TBD
+The returned value would be:
+
+`n * (n-1) * (n-1)`
+    `= n * ( (n-1)^2 )`
+    `= n * ( n^2 - 2n + 1)`
+    `= n^3 - 2n^2 + n`
+
+The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
 ## Assigment 2: Interview problems
 ### 2-2
 #### Question
 What value is returned by the following function? Express your answer as a
 function of n. Give the worst-case running time using Big Oh notation.
-
 
 ```plaintext
 function pesky(n)
@@ -37,7 +43,11 @@ function pesky(n)
 ```
 
 #### Solution
-TBD
+The returned value would be:
+`(n-1) * n * n`
+    `=  n^3 - n^2`
+
+The worst-case running time would be `O(n^3)`, a cubic complexity.
 
 ### 2-3
 #### Question
@@ -49,10 +59,19 @@ function prestiferous(n)
     for i := 1 to n do
         for j := 1 to i do
             for k := j to i + j do
-                for l := 1 to i + j − k d
+                for l := 1 to i + j − k do
                     r := r + 1
     return(r)
 ```
+
+#### Solution
+The returned value would be:
+`(n-1) * n * 2n * (2n - n) `
+    `=  (n^2 - n) * (2n * n)`
+    `=  (n^2 - n) * (2n^2)`
+    `=  2n^4 - 2n^3`
+
+The worst-case running time would be `O(n^4)`, an exponentially big time complexity.
 
 ### 2-4
 #### Question
@@ -70,7 +89,14 @@ function conundrum(n)
 ```
 
 #### Solution
-TBD
+The returned value would be:
+`(n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 ) )`
+    `= (n-1) * (n-2) * ( n - n - 1 + n - 2 - 1 )`
+    `= (n-1) * (n-2) * (n-4)`
+    `= (n^2 - 2n -n + 2) * (n-4)`
+    `= n^3 - 2n^2 -n^2 + 2n - 4n^2 + 8n  + 4n + 8`
+    `= n^3 + 7n^2  + 14n + 8`
+The worst-case running time would be `O(n^3)`, a cubic time complexity.
 
 ## Assigment 2: Big Oh
 ### 2-8
