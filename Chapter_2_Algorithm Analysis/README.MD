@@ -95,7 +95,7 @@ function conundrum(n)
 #### Solution
 The returned value would be:
 ```plaintext
-(n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 ) )
+(n-1) * (n-2) * ( n - ( (n-1) + (n-2) ) - 1 )
     = (n-1) * (n-2) * ( n - n - 1 + n - 2 - 1 )
     = (n-1) * (n-2) * (n-4)
     = (n^2 - 2n -n + 2) * (n-4)
@@ -108,9 +108,16 @@ The worst-case running time would be `O(n^3)`, a cubic time complexity.
 ## Assignment 2: Big Oh
 ### 2-8
 #### Question
-For each of the following pairs of functions, either f (n) is in O(g(n)), f (n) is
-in Ω(g(n)), or f (n) = Θ(g(n)). Determine which relationship is correct and briefly
-explain why.
+(a) Is 2^(n+1) = O(2^n)?
+(b) Is 2^(2n) = O(2^n)?
+
+#### Solution
+a - No, it's just O(n)
+b - No, it's just O(n)
+
+### 2-9
+#### Question
+For each of the following pairs of functions, f (n) is in O(g(n)), Ω(g(n)), or Θ(g(n)). Determine which relationships are correct and briefly explain why.
 
 - (a) f (n) = log n2; g(n) = log n + 5
 - (b) f (n) = √n; g(n) = log n2
@@ -119,54 +126,49 @@ explain why.
 - (e) f (n) = n log n + n; g(n) = log n
 - (f) f (n) = 10; g(n) = log 10
 - (g) f (n) = 2n; g(n) = 10n2
-- (h) f (n) = 2n; g(n) = 3n
+- (h) f (n) = 2n; g(n) = 3^n
 
 #### Solution
-TBD
-
-### 2-9
-#### Question
-For each of the following pairs of functions f (n) and g(n), determine whether
-f (n) = O(g(n)), g(n) = O(f (n)), or both.
-- (a) f (n) = (n2 − n)/2, g(n) = 6n
-- (b) f (n) = n + 2√n, g(n) = n2
-- (c) f (n) = n log n, g(n) = n√n/2
-- (d) f (n) = n + log n, g(n) = √n
-- (e) f (n) = 2(log n)2, g(n) = log n + 1
-- (f) f (n) = 4n log n + n, g(n) = (n2 − n)/2
-
-#### Solution
-TBD
+- (a) f(n) is only in Θ(logn) as the worst case scenario and the best can both be expressed as 
+- (b) f(n) is in Ω(n) and O(logn) but not in Θ(g(n)) since their growth rates are different.
+- (c) f(n) is in Ω(logn) and O(logn) but not in Θ(g(n)) since their growth rates are different.
+- (d) f(n) is in Ω(n) and O(n) but not in Θ(g(n)) because their growth rates are different.
+- (e) f(n) is in Ω(nlogn) and O(nlog⁡n) but not in Θ(g(n)) because their growth rates are different.
+- (f) f(n) is in Ω(1), O(1), and Θ(1) because it's a constant function.
+- (g) f(n) is in Ω(2n) and O(2n) but not in Θ(g(n)) because their growth rates are different.
+- (h) f(n) is in Ω(2n) and O(3n) but not in Θ(g(n)) because their growth rates are different.
 
 ### 2-12
 #### Question
-For each of the following pairs of functions f (n) and g(n), give an appropriate
-positive constant c such that f (n) ≤ c · g(n) for all n > 1.
-- (a) f (n) = n2 + n + 1, g(n) = 2n3
-- (b) f (n) = n√n + n2, g(n) = n2
-- (c) f (n) = n2 − n + 1, g(n) = n2/2
+Prove that n^3 − 3n^2 − n + 1 = Θ(n^3).
 
 #### Solution
-TBD
+- The worst case (upper bound) scenario is that the function takes n^3 time to complete, which partially satisifies `Θ(n^3)`.
+- For the lower bound, we need to find a constant C > 0 that's large enough and and help prove that `(n^3 − 3n^2 − n + 1) >= C*n^3`. [TBD]
 
 ## Assignment 3: Summation
 ### 2-37
 #### Question
-When you first learned to multiply numbers, you were told that x × y means
-adding x a total of y times, so 5×4 = 5+5+5+5 = 20. What is the time complexity
-of multiplying two n-digit numbers in base b (people work in base 10, of course,
-while computers work in base 2) using the repeated addition method, as a function
-of n and b. Assume that single-digit by single-digit addition or multiplication takes
-O(1) time. (Hint: how big can y be as a function of n and b?)
+Find an expression for the sum of the ith row of the following triangle, and prove its correctness. Each entry is the sum of the three entries directly above it. All non-existing entries are considered 0.
+
+```
+                1
+            1   1   1
+        1   2   3   2   1
+    1   3   6   7   6   3   1
+1   4   10  16  19  16  10  4   1
+```
 
 #### Solution
-TBD
+```plaintext
+let the triangle be S
+the sum of Sith row = 1 + sum(S[i-1]) row if i > 0
+```
 
 ## Assignment 4: Interview questions
 ### 2-49
 #### Question
-Suppose we start with n companies that eventually merge into one big company.
-How many different ways are there for them to merge?
+Suppose we start with n companies that eventually merge into one big company. How many different ways are there for them to merge?
 
 #### Solution
 TBD
