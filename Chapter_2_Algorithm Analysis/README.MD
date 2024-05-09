@@ -197,7 +197,40 @@ Since their priority is to stay alive, only 1 person will get the dollar and no 
 https://leetcode.com/problems/remove-k-digits/
 
 #### Solution
-TBD
+```javascript
+/**
+ * @param {string} num
+ * @param {number} k
+ * @return {string}
+ */
+const removeKdigits = (num, k) => {
+    const stack = []
+
+    for(let digit of num){
+
+        // At every iteration, re-arrange stack if `digit` < stack's head
+        while( k> 0 && stack.length && digit < stack[stack.length -1] ){
+            stack.pop()
+            k--;
+        }
+
+        stack.push(digit)
+    }
+
+    // Deal with digits that the k limit did not allow to remove
+    while( k> 0){
+        stack.pop()
+        k--;
+    }
+
+    result = stack.join('')
+
+    // Turn stack into string and deal with leading zeros
+    result = result.replace(/^0+/, '')
+
+    return result === '' ? '0' : result
+};
+```
 
 ### Leeet code 2-2: Counting bits
 #### Question
