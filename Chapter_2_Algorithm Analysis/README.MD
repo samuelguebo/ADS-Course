@@ -278,7 +278,23 @@ TBD
 https://www.hackerrank.com/challenges/pangrams/
 
 #### Solution
-TBD
+```javascript
+function pangrams(s) {
+    let counter = {}
+
+    // Get rid of all spaces
+    s = s.toLowerCase().replaceAll(' ', '');
+
+    for(let char of s){
+        let key = char
+        if(key.length > 0){
+            counter[key] = key;
+        }
+    }
+
+    return Object.keys(counter).length == 26 ? 'pangram': 'not pangram'
+}
+```
 
 ### HackerRank 2-2: Power sum
 #### Question
