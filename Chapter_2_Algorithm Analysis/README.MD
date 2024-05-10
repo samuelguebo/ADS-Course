@@ -237,7 +237,34 @@ const removeKdigits = (num, k) => {
 https://leetcode.com/problems/counting-bits/
 
 #### Solution
-TBD
+```javascript
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+const countBits = (n) => {
+    let ans = []
+
+    for(let i = 0; i <= n; i++){
+        let remainder = i;
+        let counter = 0;
+
+        while (remainder != 0) {
+
+            // Increment counter when remainder = 1
+            counter += remainder % 2;
+
+            // Get the remainder by flooring the division
+            remainder = Math.floor(remainder / 2);
+        }
+
+        ans[i] = counter
+
+    }
+
+    return ans;
+};
+```
 
 ### Leet code 2-3: 4 sum
 #### Question
