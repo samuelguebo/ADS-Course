@@ -144,7 +144,7 @@ Prove that n^3 − 3n^2 − n + 1 = Θ(n^3).
 
 #### Solution
 - The worst case (upper bound) scenario is that the function takes n^3 time to complete, which partially satisifies `Θ(n^3)`.
-- For the lower bound, we need to find a constant C > 0 that's large enough and and help prove that `(n^3 − 3n^2 − n + 1) >= C*n^3`. [TBD]
+- For the lower bound, we need to find a constant C > 0 that's large enough and and help prove that `(n^3 − 3n^2 − n + 1) >= C*n^3`.
 
 ## Assignment 3: Summation
 ### 2-37
@@ -271,7 +271,48 @@ const countBits = (n) => {
 https://leetcode.com/problems/4sum/
 
 #### Solution
-TBD
+```javascript
+function fourSum(nums, target) {
+    // Sort the array
+    nums.sort((a, b) => a - b);
+
+    const result = [];
+
+    for (let i = 0; i < nums.length - 3; i++) {
+        // Skip duplicates
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+        for (let j = i + 1; j < nums.length - 2; j++) {
+            // Skip duplicates
+            if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+
+            let left = j + 1;
+            let right = nums.length - 1;
+
+            while (left < right) {
+                const sum = nums[i] + nums[j] + nums[left] + nums[right];
+                if (sum === target) {
+                    result.push([nums[i], nums[j], nums[left], nums[right]]);
+
+                    // Skip duplicates
+                    while (left < right && nums[left] === nums[left + 1]) left++;
+                    while (left < right && nums[right] === nums[right - 1]) right--;
+
+                    left++;
+                    right--;
+                } else if (sum < target) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+```
 
 ### HackerRank 2-1: Pangrams
 #### Question
