@@ -311,7 +311,36 @@ function fourSum(nums, target) {
 
     return result;
 }
+```
 
+### Leet code (bonus): 2-sum II
+#### Question
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+```javascript
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum = function(numbers, target) {
+    // track numbers if format {number: index}
+    let hashMap = {}
+
+    i = 1
+    for(let num of numbers){
+        let diff = target - num
+        if(diff in hashMap){
+            // check if the missing difference is already in hashMap
+            return [hashMap[diff], i]
+        }else{
+            // add the diff to the hashMap
+            hashMap[num] = i
+        }
+        i++
+    }
+
+};
 ```
 
 ### HackerRank 2-1: Pangrams
