@@ -266,6 +266,108 @@ const countBits = (n) => {
 };
 ```
 
+### Leet code (bonus): 2-sum II
+#### Question
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+#### Solution with HashMap
+```javascript
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSumWithHashMap = function(numbers, target) {
+    // track numbers if format {number: index}
+    let hashMap = {}
+
+    i = 1
+    for(let num of numbers){
+        let diff = target - num
+        if(diff in hashMap){
+            // check if the missing difference is already in hashMap
+            return [hashMap[diff], i]
+        }else{
+            // add the diff to the hashMap
+            hashMap[num] = i
+        }
+        i++
+    }
+
+};
+```
+#### Solution with 2 pointers
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSumWithPointers = function(nums, target) {
+    let l = 0;
+    let r = numbers.length -1
+
+    while(l <= r){
+        // try to find a match
+        let curSum = numbers[l] + numbers[r]
+        // increment pointers accordingly
+        if(curSum < target){
+            l++;
+        }else if (curSum > target){
+            r--;
+        }else{
+            // curSum == target
+            return [l+1, r+1]
+        }
+    }
+}
+```
+### Leet code (bonus): 3-sum
+#### Question
+https://leetcode.com/problems/3sum/submissions/
+
+#### Solution
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+const threeSum = (nums) => {
+    output = []
+    // sort numbers ascendingly
+    nums.sort((a,b) => a - b)
+
+    for(let i = 0; i< nums.length -1; i++){
+        // skip duplicate of first part of triplet
+        if(i != 0 && nums[i] == nums[i-1]) { continue }
+
+        // use two pointers as in the 2-sum solution
+        let l = i + 1
+        let r = nums.length -1
+
+        while( l < r){
+            let total = nums[i] + nums[l] + nums[r]
+
+            if (total > 0) {
+                r--
+            } else if (total < 0) {
+                l++
+            } else{
+                output.push([nums[i] , nums[l] , nums[r]])
+
+                // increment left pointer, skip duplicate
+                l++
+                while (nums[l] == nums[l-1]){ l++ }
+            }
+        }
+    }
+
+    return output
+}
+
+```
+
 ### Leet code 2-3: 4 sum
 #### Question
 https://leetcode.com/problems/4sum/
@@ -312,37 +414,6 @@ function fourSum(nums, target) {
     return result;
 }
 ```
-
-### Leet code (bonus): 2-sum II
-#### Question
-https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
-
-```javascript
-/**
- * @param {number[]} numbers
- * @param {number} target
- * @return {number[]}
- */
-const twoSum = function(numbers, target) {
-    // track numbers if format {number: index}
-    let hashMap = {}
-
-    i = 1
-    for(let num of numbers){
-        let diff = target - num
-        if(diff in hashMap){
-            // check if the missing difference is already in hashMap
-            return [hashMap[diff], i]
-        }else{
-            // add the diff to the hashMap
-            hashMap[num] = i
-        }
-        i++
-    }
-
-};
-```
-
 ### HackerRank 2-1: Pangrams
 #### Question
 https://www.hackerrank.com/challenges/pangrams/
