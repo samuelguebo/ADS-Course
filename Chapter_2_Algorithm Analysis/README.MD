@@ -209,7 +209,7 @@ const removeKdigits = (num, k) => {
     for(let digit of num){
 
         // At every iteration, re-arrange stack if `digit` < stack's head
-        while( k> 0 && stack.length && digit < stack[stack.length -1] ){
+        while( k > 0 && stack.length && digit < stack[stack.length -1] ){
             stack.pop()
             k--;
         }
@@ -380,11 +380,12 @@ function fourSum(nums, target) {
 
     const result = [];
 
-    for (let i = 0; i < nums.length - 3; i++) {
+    for (let i = 0; i < nums.length - 1; i++) {
         // Skip duplicates
-        if (i > 0 && nums[i] === nums[i - 1]) continue;
+        if (i != 0 && nums[i] === nums[i - 1]) continue;
 
-        for (let j = i + 1; j < nums.length - 2; j++) {
+        for (let j = i + 1; j < nums.length - 1; j++) {
+
             // Skip duplicates
             if (j > i + 1 && nums[j] === nums[j - 1]) continue;
 
@@ -396,12 +397,9 @@ function fourSum(nums, target) {
                 if (sum === target) {
                     result.push([nums[i], nums[j], nums[left], nums[right]]);
 
-                    // Skip duplicates
-                    while (left < right && nums[left] === nums[left + 1]) left++;
-                    while (left < right && nums[right] === nums[right - 1]) right--;
-
+                    // Skip duplicates, increment left pointer
+                    while (nums[left] === nums[left + 1]) left++;
                     left++;
-                    right--;
                 } else if (sum < target) {
                     left++;
                 } else {
@@ -442,7 +440,23 @@ function pangrams(s) {
 https://www.hackerrank.com/challenges/the-power-sum/
 
 #### Solution
-TBD
+```javascript
+function powerSum(X, N) {
+    // Helper function to recursively find the number of ways
+    function findWays(total, power, num) {
+        let value = Math.pow(num, power);
+
+        if (value > total) {
+            return 0; // No valid combination
+        } else if (value === total) {
+            return 1; // Found a valid combination
+        } else {
+            // Include the current number , Exclude the current number and move to the next
+            return findWays(total - value, power, num + 1) + findWays(total, power, num + 1);
+        }
+    }
+}
+```
 
 ### HackerRank 2-3: Magic square forming
 #### Question
