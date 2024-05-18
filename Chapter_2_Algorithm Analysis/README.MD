@@ -179,9 +179,7 @@ If ultimately the have to merge into one big company, there is only one way for 
 Six pirates must divide $300 dollars among themselves. The division is to proceed as follows. The senior pirate proposes a way to divide the money. Then the pirates vote. If the senior pirate gets at least half the votes he wins, and that division remains. If he doesn’t, he is killed and then the next senior-most pirate gets a chance to do the division. Now you have to tell what will happen and why (i.e., how many pirates survive and how the division is done)? All the pirates are intelligent and the first priority is to stay alive and the next priority is to get as much money as possible.
 
 #### Solution
-```plaintext
 The likelihood of not getting enough vote and being killed is high because other pirates have an incentive to have less crew members alive as it means a larger share of the $300. All pirates will survive and share the money in equal parts: 300/6 = $50.
-```
 
 
 ### 2-52
@@ -463,5 +461,35 @@ function powerSum(X, N) {
 https://www.hackerrank.com/challenges/magic-square-forming/
 
 #### Solution
-TBD
+```javascript
+function formingMagicSquare(s) {
+    // Define all possible magic squares for a 3x3 grid
+    const magicSquares = [
+        [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
+        [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
+        [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
+        [[2, 9, 4], [7, 5, 3], [6, 1, 8]],
+        [[8, 3, 4], [1, 5, 9], [6, 7, 2]],
+        [[4, 3, 8], [9, 5, 1], [2, 7, 6]],
+        [[6, 7, 2], [1, 5, 9], [8, 3, 4]],
+        [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
+    ];
+
+    let minCost = Infinity;
+
+    // Calculate the cost for each magic square and find the minimum cost
+    for (const magicSquare of magicSquares) {
+        let cost = 0;
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                cost += Math.abs(s[i][j] - magicSquare[i][j]);
+            }
+        }
+        minCost = Math.max(minCost, cost);
+    }
+
+    return minCost;
+
+}
+```
 
