@@ -1,4 +1,4 @@
-# Chapter 2: Algorithm Analysis
+# Chapter 3: Data structures
 
 ## Course material
 - Lectures: [Elementary Data Structures](https://www.youtube.com/watch?v=vg2u8Hbb6lE&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=4), [ Dictionaries](https://www.youtube.com/watch?v=27jDhSEJ1ag&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=5), [ Hashing](https://www.youtube.com/watch?v=cGv8J2DBFPk&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=6)
