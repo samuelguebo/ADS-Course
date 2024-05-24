@@ -118,7 +118,7 @@ TBD
 https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
 
 ### Solution
-Recursive solution
+**Recursive solution**: Use recursion to increment the count of levels. The idea is that if there's no child node, the level is 0. Otherwise, we'd increment the level by 1.
 
 ```javascript
 const maxDepth(root){
@@ -126,14 +126,15 @@ const maxDepth(root){
         return 0
     }
 
-    return Math.max(
+    return 1 + Math.max(
         maxDepth(root.left),
         maxDepth(root.right)
     )
 }
 ```
 
-Iterative approach using DFS
+**Iterative approach using BFS**: Here traverse the tree and for each node, I store the current node in a variable, delete it from the queue and add the left and right nodes using a loof of length 2 at most. All that's left to do is increment the level at every iteration of the outer loop (tree traversal).
+
 
 ```javascript
 const maxDepth = function (root){
@@ -162,6 +163,32 @@ const maxDepth = function (root){
 
     }
     
+    return level
+}
+```
+
+**Iterative approach using DFS**: Here we use a 2D stack that associates the node with the current depth. At every iteration, you get rid of the previous node and try to add one or two child nodes. You update the overall depth variable by taking the max value of node right or left.
+
+```javascript
+const maxDepth = function (root){
+    if(!root){
+        return 0
+    }
+
+    let level = 1
+    let stack = [[root, level]]
+
+while (stack.length > 0){
+        let node, depth;
+        [node, depth] = stack.pop()
+
+        if(node != null){
+            level =  Math.max(depth, level)
+            stack.push([node.left, depth + 1])
+            stack.push([node.right, depth + 1])
+        }
+    }
+
     return level
 }
 ```
