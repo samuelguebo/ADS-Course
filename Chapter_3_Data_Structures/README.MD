@@ -111,3 +111,57 @@ a-cycle/problem
 
 ### Solution
 TBD
+
+
+### Extra: Tree practice
+#### Maximum depth of binary tree
+https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
+
+### Solution
+Recursive solution
+
+```javascript
+const maxDepth(root){
+    if(!root){
+        return 0
+    }
+
+    return Math.max(
+        maxDepth(root.left),
+        maxDepth(root.right)
+    )
+}
+```
+
+Iterative approach using DFS
+
+```javascript
+const maxDepth = function (root){
+    if(!root){
+        return 0
+    }
+
+    let level = 0
+    let stack = [root]
+    
+    
+    while(stack.length > 0){
+        
+        for(let i = 0; i < stack.length; i++){
+            let node = stack.shift()
+            if(node.left != null){
+                stack.push(node.left)
+            }
+
+            if(node.right != null){
+                stack.push(node.right)
+            }
+        }
+        
+        level++
+
+    }
+    
+    return level
+}
+```
