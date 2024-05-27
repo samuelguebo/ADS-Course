@@ -74,7 +74,38 @@ TBD
 https://leetcode.com/problems/validate-binary-search-tree/
 
 #### Solution
-TBD
+Thought process: Check recursively whether any node violates max and min of its parent, and return false; otherwise, keep checking the left and right subtrees.
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+const isValidBST = function(root) {
+    validate(root, null, null)
+    return true;
+};
+
+/**
+ * @param {TreeNode} root
+ * @param {Number} min
+ * @param {Number} max
+ * @return {boolean}
+ */
+const validate = function (root, min, max){
+    // if we've made it to the bottom of the tree, that's cool
+    if(!root){
+        return true
+    }else if(max != null && root.val >= max || min != null && root.val <= min){
+        return false
+    } else {
+        // So far, so good, continue the recursion on left and right
+        return validate(root.left, min, root.val) && validate(root.right, root.val, max)
+    }
+}
+
+
+```
 
 ### 3-2: Count of smaller numbers after self
 #### Question
