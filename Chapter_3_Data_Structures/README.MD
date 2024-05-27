@@ -126,7 +126,23 @@ TBD
 #### Question
 https://www.hackerrank.com/challenges/is-binary-search-tree/
 ### Solution
-TBD
+
+```javascript
+function processData(input) {
+    return validate(input, null, null)
+}
+
+var validate = function (root, min, max){
+    if(!root){
+        return true
+    }
+    if( (min !=null && root.data <= min)
+       || (max != null && root.data >= max)) {
+        return false
+    }
+    return validate(root.left, min, root.data) && validate(root.right, root.data, max)
+}
+```
 
 ### 3-2: Queue using two stacks
 #### Question
