@@ -119,7 +119,39 @@ TBD
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
 #### Solution
-TBD
+```javascript
+/**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+var buildTree = function(preorder, inorder) {
+
+    let preIndex = 0
+    let inIndexMap = {}
+    inorder.forEach((val, index) => {inIndexMap[val] = index });
+
+    function build(inStart, inEnd) {
+        if (inStart > inEnd) return null;
+
+        // The root value is the current element in the preorder array
+        let rootVal = preorder[preIndex++];
+        let root = new TreeNode(rootVal);
+
+        // Find the index of the root value in the inorder array
+        let inIndex = inIndexMap[rootVal];
+
+        // Recursively build the left and right subtrees
+        root.left = build(inStart, inIndex - 1);
+        root.right = build(inIndex + 1, inEnd);
+
+        return root;
+    }
+
+    return build(0, inorder.length -1)
+
+};
+```
 
 ## Assignment 6: HackerRank
 ### 3-1: Is This a Binary Search Tree?
