@@ -119,6 +119,8 @@ TBD
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
 #### Solution
+**Thought process**: I map indices of values in the inorder array, then recursively build the tree using the preorder and inorder arrays, returning the root node. `preIndex` keeps track of the current root node in the preorder traversal, and the helper function recursively constructs the left and right subtrees by adjusting the indices appropriately.
+
 ```javascript
 /**
  * @param {number[]} preorder
@@ -185,8 +187,7 @@ TBD
 
 ### 3-3: Cycle detection
 #### Question
-https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-
-a-cycle/problem
+https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
 
 ### Solution
 TBD
