@@ -128,30 +128,38 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
  * @return {TreeNode}
  */
 var buildTree = function(preorder, inorder) {
+    // build index of inorder indices
+    let inMap = {}
 
+    // track index of root in preorder tree
     let preIndex = 0
-    let inIndexMap = {}
-    inorder.forEach((val, index) => {inIndexMap[val] = index });
+    inorder.forEach((value, index) => { inMap[value] = index})
 
-    function build(inStart, inEnd) {
-        if (inStart > inEnd) return null;
+    function build(inStart, inEnd){
 
-        // The root value is the current element in the preorder array
-        let rootVal = preorder[preIndex++];
-        let root = new TreeNode(rootVal);
+        // base case of recursion
+        if( inStart > inEnd) {
+            return null
+        }
 
-        // Find the index of the root value in the inorder array
-        let inIndex = inIndexMap[rootVal];
+        // get rootVal using its index in preorder
+        let rootVal = preorder[preIndex]
 
-        // Recursively build the left and right subtrees
-        root.left = build(inStart, inIndex - 1);
-        root.right = build(inIndex + 1, inEnd);
+        // increments preOrder index for next recursive call
+        preIndex++
 
-        return root;
+        let inIndex = inMap[rootVal]
+
+        // build node, add child leaves using recursion
+        let root = new TreeNode(rootVal)
+        root.left = build(inStart, inIndex -1)
+        root.right = build(inIndex +1, inEnd)
+
+        return root
     }
 
-    return build(0, inorder.length -1)
 
+    return build(0, inorder.length -1)
 };
 ```
 
@@ -160,7 +168,7 @@ var buildTree = function(preorder, inorder) {
 #### Question
 https://www.hackerrank.com/challenges/is-binary-search-tree/
 ### Solution
-
+**Thought Process**: Check recursively whether any node violates max and min of its parent, and return false; otherwise, keep checking the left and right subtrees.
 ```javascript
 function processData(input) {
     return validate(input, null, null)
