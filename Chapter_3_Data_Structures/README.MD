@@ -36,18 +36,13 @@ var isValid = function(s) {
     return stack.length < 1
 };
 ```
-### 3-2
-#### Question
-Give an algorithm that takes a string S consisting of opening and closing parentheses, say )()(())()()))())))(, and finds the length of the longest balanced parentheses in S, which is 12 in the example above. (Hint: The solution is not necessarily a contiguous run of parenthesis from S.)
-#### Solution
-TBD
 
 ### 3-3
 #### Question
 Give an algorithm to reverse the direction of a given singly linked list. In other words, after the reversal all pointers should now point backwards. Your algorithm should take linear time.
 
 #### Solution
-***Thought process***: Use pointers, keep track of head, tail. Detach and attach nodes so as head becomes tails
+**Thought process**: Use pointers, keep track of head, tail. Detach and attach nodes so as head becomes tails
 
 ```javascript
 var reverseLinkedList = function(head) {
@@ -74,13 +69,6 @@ var reverseLinkedList = function(head) {
 };
 ```
 
-### 3-4
-#### Question
-Design a stack S that supports S.push(x), S.pop(), and S.findmin(), which returns the minimum element of S. All operations should run in constant time.
-
-#### Solution
-TBD
-
 ### 3-5
 #### Question
 Tic-tac-toe is a game played on an n × n board (typically n = 3) where two players take consecutive turns placing “O” and “X” marks onto the board cells. The game is won if n consecutive “O” or ‘X” marks are placed in a row, column, or diagonal. Create a data structure with O(n) space that accepts a sequence of moves, and reports in constant time whether the last move won the game.
@@ -90,33 +78,120 @@ TBD
 
 
 ## Assignment 2: Applications of Tree Structures
-### 3-11
-#### Question
-Design a dictionary data structure in which search, insertion, and deletion can all be processed in O(1) time in the worst case. You may assume the set elements are integers drawn from a finite set 1, 2, .., n, and initialization can take O(n) time.
-
-#### Solution
-TBD
-
 ### 3-12
 #### Question
 The maximum depth of a binary tree is the number of nodes on the path from the root down to the most distant leaf node. Give an O(n) algorithm to find the maximum depth of a binary tree with n nodes.
 
 #### Solution
-TBD
+**Thought process**: 3 possible ways, recursion, BFS or DFS. Increment the level variable and keep track of it using a 1D stack and inner loop of length 2 or use a 2D stack (BFS).
+
+#### Maximum depth of binary tree
+https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
+
+### Solution
+**Recursive solution**: Use recursion to increment the count of levels. The idea is that if there's no child node, the level is 0. Otherwise, we'd increment the level by 1.
+
+```javascript
+const maxDepth(root){
+    if(!root){
+        return 0
+    }
+
+    return 1 + Math.max(
+        maxDepth(root.left),
+        maxDepth(root.right)
+    )
+}
+```
+
+**Iterative approach using BFS**: Here traverse the tree and for each node, I store the current node in a variable, delete it from the queue and add the left and right nodes using a loof of length 2 at most. All that's left to do is increment the level at every iteration of the outer loop (tree traversal).
+
+
+```javascript
+const maxDepth = function (root){
+    if(!root){
+        return 0
+    }
+
+    let level = 0
+    let stack = [root]
+    
+    
+    while(stack.length > 0){
+        
+        for(let i = 0; i < stack.length; i++){
+            let node = stack.shift()
+            if(node.left != null){
+                stack.push(node.left)
+            }
+
+            if(node.right != null){
+                stack.push(node.right)
+            }
+        }
+        
+        level++
+
+    }
+    
+    return level
+}
+```
+
+**Iterative approach using DFS**: Here we use a 2D stack that associates the node with the current depth. At every iteration, you get rid of the previous node and try to add one or two child nodes. You update the overall depth variable by taking the max value of node right or left.
+
+```javascript
+const maxDepth = function (root){
+    if(!root){
+        return 0
+    }
+
+    let level = 1
+    let stack = [[root, level]]
+
+while (stack.length > 0){
+        let node, depth;
+        [node, depth] = stack.pop()
+
+        if(node != null){
+            level =  Math.max(depth, level)
+            stack.push([node.left, depth + 1])
+            stack.push([node.right, depth + 1])
+        }
+    }
+
+    return level
+}
+```
 
 ### 3-17
 #### Question
 Give an O(n) algorithm that determines whether a given n-node binary tree is height-balanced (see Problem 3-15).
 
 #### Solution
-TBD
+**Though process**: Use a helper function to calculate the depth of each subtree while checking if the difference in depths exceeds 1, setting a flag `isBal` to false if it does. Return the isBal flag after completing the depth calculation for the entire tree.
 
-### 3-22
-#### Question
-Design a data structure that supports the following two operations:• insert(x) – Insert item x from the data stream to the data structure. • median() – Return the median of all elements so far. All operations must take O(log n) time on an n-element set.
+```javascript
+var isBalanced = function(root) {
+    let isBal = true
+    function depth(root){
+        if(!root){
+            return 0
+        }
 
-#### Solution
-TBD
+        let leftDepth = depth(root.left)
+        let rightDepth = depth(root.right)
+
+        if (Math.abs( leftDepth - rightDepth )  > 1) {
+            isBal = false
+        }
+
+        return Math.max(leftDepth, rightDepth) + 1 
+    }
+    depth(root)
+    return isBal
+};
+```
 
 ## Assignment 5: LeetCode
 ### 3-1: Valid binary search tree
@@ -153,8 +228,6 @@ const validate = function (root, min, max){
         return validate(root.left, min, root.val) && validate(root.right, root.val, max)
     }
 }
-
-
 ```
 
 ### 3-2: Count of smaller numbers after self
@@ -276,85 +349,4 @@ const hasCycle = function(head) {
     // no duplicates were found
     return false
 };
-```
-
-
-### Extra: Tree practice
-#### Maximum depth of binary tree
-https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
-
-### Solution
-**Recursive solution**: Use recursion to increment the count of levels. The idea is that if there's no child node, the level is 0. Otherwise, we'd increment the level by 1.
-
-```javascript
-const maxDepth(root){
-    if(!root){
-        return 0
-    }
-
-    return 1 + Math.max(
-        maxDepth(root.left),
-        maxDepth(root.right)
-    )
-}
-```
-
-**Iterative approach using BFS**: Here traverse the tree and for each node, I store the current node in a variable, delete it from the queue and add the left and right nodes using a loof of length 2 at most. All that's left to do is increment the level at every iteration of the outer loop (tree traversal).
-
-
-```javascript
-const maxDepth = function (root){
-    if(!root){
-        return 0
-    }
-
-    let level = 0
-    let stack = [root]
-    
-    
-    while(stack.length > 0){
-        
-        for(let i = 0; i < stack.length; i++){
-            let node = stack.shift()
-            if(node.left != null){
-                stack.push(node.left)
-            }
-
-            if(node.right != null){
-                stack.push(node.right)
-            }
-        }
-        
-        level++
-
-    }
-    
-    return level
-}
-```
-
-**Iterative approach using DFS**: Here we use a 2D stack that associates the node with the current depth. At every iteration, you get rid of the previous node and try to add one or two child nodes. You update the overall depth variable by taking the max value of node right or left.
-
-```javascript
-const maxDepth = function (root){
-    if(!root){
-        return 0
-    }
-
-    let level = 1
-    let stack = [[root, level]]
-
-while (stack.length > 0){
-        let node, depth;
-        [node, depth] = stack.pop()
-
-        if(node != null){
-            level =  Math.max(depth, level)
-            stack.push([node.left, depth + 1])
-            stack.push([node.right, depth + 1])
-        }
-    }
-
-    return level
-}
 ```
