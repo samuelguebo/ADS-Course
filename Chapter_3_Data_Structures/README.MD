@@ -21,8 +21,34 @@ TBD
 ### 3-3
 #### Question
 Give an algorithm to reverse the direction of a given singly linked list. In other words, after the reversal all pointers should now point backwards. Your algorithm should take linear time.
+
 #### Solution
-TBD
+***Thought process***: Use pointers, keep track of head, tail. Detach and attach nodes so as head becomes tails
+
+```javascript
+var reverseLinkedList = function(head) {
+    let tail = null
+    let headNode = head
+
+
+    while (headNode != null){
+        // prepare prevNode, if there is any
+        let nextHeadNode = headNode.next
+
+        // re-configure headNode connection
+        headNode.next = tail
+
+        // set head as tail
+        tail = headNode
+
+        // move to next headNode
+        headNode = nextHeadNode
+
+    }
+
+    return tail
+};
+```
 
 ### 3-4
 #### Question
