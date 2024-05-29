@@ -198,7 +198,35 @@ TBD
 https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
 
 ### Solution
-TBD
+**Thought process**: Use a set and track nodes that were already encountered. If we ever come across something we've seen before return `true`.
+
+```javascript
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+const hasCycle = function(head) {
+
+    // track duplicates with a set
+    let set = new Set()
+    let currNode = head
+
+    // traverse the linkedlist in search of a duplicate
+    while(currNode != null){
+        // add whole node to the set
+        if(set.has(currNode)){
+            return true
+        }else{
+           set.add(currNode)
+            // move on to next Node
+        }
+        currNode = currNode.next
+
+    }
+    // no duplicates were found
+    return false
+};
+```
 
 
 ### Extra: Tree practice
