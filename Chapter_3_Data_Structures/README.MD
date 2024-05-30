@@ -92,7 +92,7 @@ https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
 **Recursive solution**: Use recursion to increment the count of levels. The idea is that if there's no child node, the level is 0. Otherwise, we'd increment the level by 1.
 
 ```javascript
-const maxDepth(root){
+const maxDepth = function (root){
     if(!root){
         return 0
     }
@@ -199,7 +199,7 @@ var isBalanced = function(root) {
 https://leetcode.com/problems/validate-binary-search-tree/
 
 #### Solution
-Thought process: Check recursively whether any node violates max and min of its parent, and return false; otherwise, keep checking the left and right subtrees.
+**Thought process**: Check recursively whether any node violates max and min of its parent, and return false; otherwise, keep checking the left and right subtrees.
 
 ```javascript
 /**
@@ -281,7 +281,6 @@ var buildTree = function(preorder, inorder) {
         return root
     }
 
-
     return build(0, inorder.length -1)
 };
 ```
@@ -314,8 +313,45 @@ var validate = function (root, min, max){
 https://www.hackerrank.com/challenges/queue-using-two-stacks/
 
 ### Solution
-TBD
+**Thought process**: use two stacks, mainStack and frontStack, to maintain the queue's FIFO order.
+In `push()`, transfer all items from mainStack to frontStack in reverse order, add newest `x` to frontStack, then transfer frontStack elements back to mainStack. The last step ensures the newest element which was LI becomes FO.
+```javascript
+class MyQueue  {
+ constructor() {
+        // Initialize two stacks
+        this.mainStack = [];
+        this.frontStack = [];
+    }
 
+    push = function(x) {
+        // if main stack ins't empty, transfer its data to frontStack, in reverse order
+        while (this.mainStack.length > 0){
+            this.frontStack.push(this.mainStack.pop())
+        }
+
+        // Add the new data to end of the frontStack
+        this.frontStack.push(x)
+
+        // transfer frontStack data to mainStack in reverse order
+        // but x will be added at the end so that LI can be FO with pop()
+        while(this.frontStack.length > 0){
+            this.mainStack.push(this.frontStack.pop())
+        }
+    }
+
+    pop = function() {
+        return this.mainStack.pop()
+    }
+
+    peek = function() {
+        return this.mainStack[this.mainStack.length -1]
+    }
+
+    empty = function() {
+        return this.mainStack.length === 0
+    }
+}
+```
 ### 3-3: Cycle detection
 #### Question
 https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
