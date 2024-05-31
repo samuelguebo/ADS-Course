@@ -82,13 +82,11 @@ TBD
 #### Question
 The maximum depth of a binary tree is the number of nodes on the path from the root down to the most distant leaf node. Give an O(n) algorithm to find the maximum depth of a binary tree with n nodes.
 
-#### Solution
-**Thought process**: 3 possible ways, recursion, BFS or DFS. Increment the level variable and keep track of it using a 1D stack and inner loop of length 2 or use a 2D stack (BFS).
-
-#### Maximum depth of binary tree
 https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
 
-### Solution
+#### Solutions
+**Thought process**: 3 possible ways, recursion, BFS or DFS. Increment the level variable and keep track of it using a 1D stack and inner loop of length 2 or use a 2D stack (BFS).
+
 **Recursive solution**: Use recursion to increment the count of levels. The idea is that if there's no child node, the level is 0. Otherwise, we'd increment the level by 1.
 
 ```javascript
