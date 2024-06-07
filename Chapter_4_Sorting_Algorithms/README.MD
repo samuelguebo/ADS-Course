@@ -9,10 +9,28 @@
 #### Question
 We are given a set of S containing n real numbers and a real number x, and seek efficient algorithms to determine whether two elements of S exist whose sum is exactly x. (a) Assume that S is unsorted. Give an O(n log n) algorithm for the problem. (b) Assume that S is sorted. Give an O(n) algorithm for the problem.
 #### Solution
-**Thought process**: TBD
+**Thought process**: Use the two-sum II approach but sort S first. The sorting will be O(nlogn) and use the two-pointer search in a sorted array would be O(n) in worst case scenario. In case the array is already sorted, just run the two-pointer search.
 
 ```javascript
-// TBD
+function findPairInUnsortedArray(s, target){
+    // sort s
+    s = s.sort((a, b) => a-b)
+
+    // search with two pointers
+    l = 0
+    r = s.length -1
+    while( l < r){
+        let sum = s[l] + s[r]
+        if(sum === target){
+            return [l,r]
+        }else if(sum < target){
+            l++
+        }else{
+            r--
+        }
+    }
+}
+
 ```
 
 ### 1-2
@@ -20,7 +38,7 @@ We are given a set of S containing n real numbers and a real number x, and seek 
 Devise an algorithm for finding the k smallest elements of an unsorted set of n integers in O(n + k log n).
 
 #### Solution
-**Thought process**: TBD
+**Thought process**: Let's sort the array in ascending order and iterate k times to add the elements found in a subset array, then return the subset array. 
 
 ```javascript
 // TBD
