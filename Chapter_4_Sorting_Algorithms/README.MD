@@ -38,10 +38,19 @@ function findPairInUnsortedArray(s, target){
 Devise an algorithm for finding the k smallest elements of an unsorted set of n integers in O(n + k log n).
 
 #### Solution
-**Thought process**: Let's sort the array in ascending order and iterate k times to add the elements found in a subset array, then return the subset array. 
+**Thought process**: Transform the list s into a min-heap in O(n) time with the `heapq` function and pop the smallest element from the heap k times. This will give us the k smallest elements, each in O(log⁡n). So the overall complexity will be O(n + k log n).
 
-```javascript
-// TBD
+```python
+import heapq
+
+def find_k_smallest_elements(s, k):
+    # Convert the array into a min-heap in O(n) time
+    heapq.heapify(s)
+
+    # Extract the k smallest elements, each extraction is O(log n)
+    result = [heapq.heappop(s) for _ in range(k)]
+
+    return result
 ```
 
 ### 1-3
@@ -49,9 +58,26 @@ Devise an algorithm for finding the k smallest elements of an unsorted set of n 
 Give an efficient algorithm to rearrange an array of n keys so that all the negative keys precede all the non-negative keys. Your algorithm must be in-place, meaning you cannot allocate another array to temporarily hold the items. How fast is your algorithm? 
 
 #### Solution
-**Thought process**: TBD
+**Thought process**: Iterate through the array with two pointers, swapping elements to place negative numbers on the left and non-negative numbers on the right until the pointers meet.
+
 ```javascript
-// TBD
+function reArrangeArray(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        if (nums[left] < 0) {
+            left++;
+        } else if (nums[right] >= 0) {
+            right--;
+        } else {
+            // Swap elements at left and right positions
+            [nums[left], nums[right]] = [nums[right], nums[left]];
+            left++;
+            right--;
+        }
+    }
+}
 ```
 
 ## Assignment 2: LeetCode
